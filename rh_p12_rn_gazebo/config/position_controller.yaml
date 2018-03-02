@@ -1,0 +1,22 @@
+rh_p12_rn:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 125  
+  
+  # Position Controllers ---------------------------------------
+  rh_p12_rn_position:
+    type: position_controllers/JointPositionController
+    joint: rh_p12_rn
+
+  rh_r2_position:
+    type: position_controllers/JointPositionController
+    joint: rh_r2
+
+  rh_l1_position:
+    type: position_controllers/JointPositionController
+    joint: rh_l1
+
+  rh_l2_position:
+    type: position_controllers/JointPositionController
+    joint: rh_l2
