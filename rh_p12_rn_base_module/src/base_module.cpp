@@ -27,7 +27,7 @@ BaseModule::BaseModule()
     torque_enable_(0),
     goal_position_(0),
     goal_velocity_(0),
-    goal_torque_(30),
+    goal_current_(30),
     goal_acceleration_(0),
     is_moving_(false),
     present_position_(0),
@@ -106,8 +106,8 @@ bool BaseModule::getItemValueCallback(rh_p12_rn_base_module_msgs::GetItemValue::
     res.value = goal_position_;
   else if(req.item_name == "goal_velocity")
     res.value = goal_velocity_;
-  else if(req.item_name == "goal_torque")
-    res.value = goal_torque_;
+  else if(req.item_name == "goal_current")
+    res.value = goal_current_;
   else if(req.item_name == "goal_acceleration")
     res.value = goal_acceleration_;
   else if(req.item_name == "is_moving")
@@ -133,7 +133,7 @@ void BaseModule::process(std::map<std::string, robotis_framework::Dynamixel *> d
   torque_enable_ = _table["torque_enable"];
   goal_position_ = _table["goal_position"];
   goal_velocity_ = _table["goal_velocity"];
-  goal_torque_ = _table["goal_torque"];
+  goal_current_ = _table["goal_current"];
   goal_acceleration_ = _table["goal_acceleration"];
   is_moving_ = _table["is_moving"];
   present_position_ = _table["present_position"];

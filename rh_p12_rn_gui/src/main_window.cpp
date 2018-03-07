@@ -44,7 +44,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   QObject::connect(ui.actionAbout_Qt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt())); // qApp is a global variable for the application
   QObject::connect(&qnode, SIGNAL(refreshValue(int,int)), this, SLOT(valueChanged(int,int)));
 
-  QPixmap pix("/home/robotis/catkin_ws/src/rh-p12-rn/rh_p12_rn_gui/resources/images/RH-P12-RN.png");
+  QPixmap pix(":/images/RH-P12-RN.png");
   ui.label_pic->setPixmap(pix);
 
   setWindowIcon(QIcon(":/images/icon.png"));
@@ -64,8 +64,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   usleep(50*1000);
   ui.position_mode_radio->click();
 
-  //ui.goal_torque_slider->setValue(qnode.getItemValue("goal_torque"));
-  ui.goal_torque_slider->setValue(30);
+  //ui.goal_current_slider->setValue(qnode.getItemValue("goal_current"));
+  ui.goal_current_slider->setValue(30);
   ui.goal_vel_slider->setValue(qnode.getItemValue("goal_velocity"));
   ui.goal_accel_slider->setValue(qnode.getItemValue("goal_acceleration"));
   ui.goal_position_slider->setValue(qnode.getItemValue("goal_position"));
@@ -88,7 +88,7 @@ void MainWindow::on_position_mode_radio_clicked( bool check )
     _torque_msg.joint_name.push_back("gripper");
     _torque_msg.value.push_back(0);
 
-    if(ui.torque_onoff_check->checkState() == Checked)
+    if (ui.torque_onoff_check->checkState() == Checked)
       qnode.setCtrlItem(_torque_msg);
 
     usleep(20*1000);
@@ -102,7 +102,7 @@ void MainWindow::on_position_mode_radio_clicked( bool check )
 
     usleep(20*1000);
 
-    if(ui.torque_onoff_check->checkState() == Checked)
+    if (ui.torque_onoff_check->checkState() == Checked)
     {
       _torque_msg.value.clear();
       _torque_msg.value.push_back(1);
@@ -111,8 +111,10 @@ void MainWindow::on_position_mode_radio_clicked( bool check )
 
     usleep(20*1000);
 
-    if(curr_mode_ == 0)
-      on_goal_torque_slider_valueChanged(ui.goal_torque_spin->value());
+    int goal_curr_value = ui.goal_current_spin->value();
+    if (goal_curr_value < 0)
+      goal_curr_value = (-1) * goal_curr_value;
+    ui.goal_current_spin->setValue(goal_curr_value);
 
     ui.label_goal_velocity->setEnabled(true);
     ui.label_goal_acc->setEnabled(true);
@@ -133,18 +135,18 @@ void MainWindow::on_position_mode_radio_clicked( bool check )
 
     ui.go_goal_psoition_check->setEnabled(true);
 
-    ui.goal_torque_slider->setMinimum(0);
-    ui.goal_torque_spin->setMinimum(0);
+    ui.goal_current_slider->setMinimum(0);
+    ui.goal_current_spin->setMinimum(0);
 
     curr_mode_ = 5;
   }
 }
 
-void MainWindow::on_torque_mode_radio_clicked( bool check )
+void MainWindow::on_current_mode_radio_clicked( bool check )
 {
   if (check == true && curr_mode_ != 0)
   {
-    ROS_INFO("Torque Control Mode On");
+    ROS_INFO("Current Control Mode On");
     robotis_controller_msgs::SyncWriteItem _torque_msg;
     _torque_msg.item_name = "torque_enable";
     _torque_msg.joint_name.push_back("gripper");
@@ -191,8 +193,8 @@ void MainWindow::on_torque_mode_radio_clicked( bool check )
 
     ui.go_goal_psoition_check->setEnabled(false);
 
-    ui.goal_torque_slider->setMinimum(-820);
-    ui.goal_torque_spin->setMinimum(-820);
+    ui.goal_current_slider->setMinimum(-820);
+    ui.goal_current_spin->setMinimum(-820);
 
     curr_mode_ = 0;
   }
@@ -217,14 +219,14 @@ void MainWindow::on_torque_onoff_check_clicked( bool check )
   qnode.setCtrlItem(_torque_msg);
 }
 
-void MainWindow::on_goal_torque_slider_valueChanged(int value)
+void MainWindow::on_goal_current_slider_valueChanged(int value)
 {
-  ROS_WARN("##goal torque : %d (torque_enable: %d)", value, qnode.getItemValue("torque_enable"));
-  robotis_controller_msgs::SyncWriteItem _goal_torque_msg;
-  _goal_torque_msg.item_name = "goal_torque";
-  _goal_torque_msg.joint_name.push_back("gripper");
-  _goal_torque_msg.value.push_back(value);
-  qnode.setCtrlItem(_goal_torque_msg);
+  ROS_WARN("##goal current : %d (torque_enable: %d)", value, qnode.getItemValue("torque_enable"));
+  robotis_controller_msgs::SyncWriteItem _goal_current_msg;
+  _goal_current_msg.item_name = "goal_current";
+  _goal_current_msg.joint_name.push_back("gripper");
+  _goal_current_msg.value.push_back(value);
+  qnode.setCtrlItem(_goal_current_msg);
 }
 
 void MainWindow::on_goal_vel_slider_valueChanged( int value )
@@ -280,16 +282,16 @@ void MainWindow::on_min_position_button_clicked( bool check )
 
     ui.go_goal_psoition_check->setChecked(false);
   }
-  else if(ui.torque_mode_radio->isChecked() == true)
+  else if(ui.current_mode_radio->isChecked() == true)
   {
-    robotis_controller_msgs::SyncWriteItem _goal_torque_msg;
-    _goal_torque_msg.item_name = "goal_torque";
-    _goal_torque_msg.joint_name.push_back("gripper");
-    if(ui.goal_torque_spin->value() > 0)
-      _goal_torque_msg.value.push_back(-ui.goal_torque_spin->value());
+    robotis_controller_msgs::SyncWriteItem _goal_current_msg;
+    _goal_current_msg.item_name = "goal_current";
+    _goal_current_msg.joint_name.push_back("gripper");
+    if(ui.goal_current_spin->value() > 0)
+      _goal_current_msg.value.push_back(-ui.goal_current_spin->value());
     else
-      _goal_torque_msg.value.push_back(ui.goal_torque_spin->value());
-    qnode.setCtrlItem(_goal_torque_msg);
+      _goal_current_msg.value.push_back(ui.goal_current_spin->value());
+    qnode.setCtrlItem(_goal_current_msg);
   }
 
   ui.auto_repeat_check->setChecked(false);
@@ -315,16 +317,16 @@ void MainWindow::on_max_position_button_clicked( bool check )
 
     ui.go_goal_psoition_check->setChecked(false);
   }
-  else if(ui.torque_mode_radio->isChecked() == true)
+  else if(ui.current_mode_radio->isChecked() == true)
   {
-    robotis_controller_msgs::SyncWriteItem _goal_torque_msg;
-    _goal_torque_msg.item_name = "goal_torque";
-    _goal_torque_msg.joint_name.push_back("gripper");
-    if(ui.goal_torque_spin->value() < 0)
-      _goal_torque_msg.value.push_back(-ui.goal_torque_spin->value());
+    robotis_controller_msgs::SyncWriteItem _goal_current_msg;
+    _goal_current_msg.item_name = "goal_current";
+    _goal_current_msg.joint_name.push_back("gripper");
+    if(ui.goal_current_spin->value() < 0)
+      _goal_current_msg.value.push_back(-ui.goal_current_spin->value());
     else
-      _goal_torque_msg.value.push_back(ui.goal_torque_spin->value());
-    qnode.setCtrlItem(_goal_torque_msg);
+      _goal_current_msg.value.push_back(ui.goal_current_spin->value());
+    qnode.setCtrlItem(_goal_current_msg);
   }
 
   ui.auto_repeat_check->setChecked(false);
@@ -368,10 +370,10 @@ void *MainWindow::autoRepeatFunc(void *main_window)
         _msg.value.push_back( (_dir)? 0:740 );
         _main->qnode.setPosition(_msg);
       }
-      else if(_main->ui.torque_mode_radio->isChecked() == true)
+      else if(_main->ui.current_mode_radio->isChecked() == true)
       {
-        _msg.item_name = "goal_torque";
-        _msg.value.push_back( (_dir)? _main->ui.goal_torque_spin->value():(-1)*(_main->ui.goal_torque_spin->value()) );
+        _msg.item_name = "goal_current";
+        _msg.value.push_back( (_dir)? _main->ui.goal_current_spin->value():(-1)*(_main->ui.goal_current_spin->value()) );
         _main->qnode.setCtrlItem(_msg);
       }
       _dir = !_dir;

@@ -57,11 +57,11 @@ public Q_SLOTS:
   *******************************************/
 
   void on_position_mode_radio_clicked( bool check );
-  void on_torque_mode_radio_clicked( bool check );
+  void on_current_mode_radio_clicked( bool check );
 
   void on_torque_onoff_check_clicked( bool check );
 
-  void on_goal_torque_slider_valueChanged( int value );
+  void on_goal_current_slider_valueChanged( int value );
   void on_goal_vel_slider_valueChanged( int value );
   void on_goal_accel_slider_valueChanged( int value );
   void on_goal_position_slider_valueChanged( int value );

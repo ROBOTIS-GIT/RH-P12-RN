@@ -20,7 +20,7 @@
    <string>RH-P12-RN Example</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../../../ROBOTIS-OP3-Tools/op3_gui_demo/resources/images.qrc">
     <normaloff>:/images/icon.png</normaloff>:/images/icon.png</iconset>
   </property>
   <property name="locale">
@@ -174,9 +174,9 @@ Position</string>
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="torque_mode_radio">
+           <widget class="QRadioButton" name="current_mode_radio">
             <property name="text">
-             <string>Torque control mode</string>
+             <string>Current control mode</string>
             </property>
            </widget>
           </item>
@@ -239,14 +239,14 @@ Position</string>
            </widget>
           </item>
           <item row="0" column="0">
-           <widget class="QLabel" name="label_goal_torque">
+           <widget class="QLabel" name="label_goal_current">
             <property name="text">
-             <string>Goal torque</string>
+             <string>Goal current</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QSlider" name="goal_torque_slider">
+           <widget class="QSlider" name="goal_current_slider">
             <property name="maximum">
              <number>820</number>
             </property>
@@ -297,14 +297,14 @@ Position</string>
            </widget>
           </item>
           <item row="0" column="2">
-           <widget class="QSpinBox" name="goal_torque_spin">
+           <widget class="QSpinBox" name="goal_current_spin">
             <property name="maximum">
              <number>820</number>
             </property>
            </widget>
           </item>
           <item row="0" column="3">
-           <widget class="QLabel" name="label_max_goal_torque">
+           <widget class="QLabel" name="label_max_goal_current">
             <property name="text">
              <string>/ 0820</string>
             </property>
@@ -372,7 +372,10 @@ Position</string>
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>../resources/images/RH-P12-RN.png</pixmap>
+          <pixmap resource="../resources/images.qrc">:/images/RH-P12-RN.png</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -446,6 +449,7 @@ Position</string>
   </action>
  </widget>
  <resources>
+  <include location="../../../ROBOTIS-OP3-Tools/op3_gui_demo/resources/images.qrc"/>
   <include location="../resources/images.qrc"/>
  </resources>
  <connections>
@@ -546,9 +550,9 @@ Position</string>
    </hints>
   </connection>
   <connection>
-   <sender>goal_torque_slider</sender>
+   <sender>goal_current_slider</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>goal_torque_spin</receiver>
+   <receiver>goal_current_spin</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
@@ -562,9 +566,9 @@ Position</string>
    </hints>
   </connection>
   <connection>
-   <sender>goal_torque_spin</sender>
+   <sender>goal_current_spin</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>goal_torque_slider</receiver>
+   <receiver>goal_current_slider</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">

@@ -47,7 +47,7 @@ private:
   bool torque_enable_;
   int goal_position_;
   int goal_velocity_;
-  int goal_torque_;
+  int goal_current_;
   int goal_acceleration_;
   bool is_moving_;
   int present_position_;
