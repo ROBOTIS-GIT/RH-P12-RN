@@ -58,6 +58,7 @@ file(GLOB_RECURSE QT_SOURCES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} FOLLOW_SYMLINK
 ##############################################################################
 
 add_executable(rh_p12_rn_gui ${QT_SOURCES} ${QT_RESOURCES_CPP} ${QT_FORMS_HPP} ${QT_MOC_HPP})
+add_dependencies(rh_p12_rn_gui ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(rh_p12_rn_gui ${QT_LIBRARIES} ${catkin_LIBRARIES})
 install(TARGETS rh_p12_rn_gui RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
