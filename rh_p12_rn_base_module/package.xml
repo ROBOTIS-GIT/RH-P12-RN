@@ -19,6 +19,8 @@
   <depend>rh_p12_rn_base_module_msgs</depend>
   <depend>cmake_modules</depend>
   <depend>dynamixel_sdk</depend>
-  <depend>robotis_device</depend>
+  <depend>robotis_controller</depend>
   <depend>robotis_framework_common</depend>
+  <depend>robotis_device</depend>
+  <depend>boost</depend>
 </package>
