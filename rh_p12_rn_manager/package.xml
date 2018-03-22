@@ -13,12 +13,12 @@
   <url type="repository">https://github.com/ROBOTIS-GIT/RH-P12-RN</url>
   <url type="bugtracker">https://github.com/ROBOTIS-GIT/RH-P12-RN/issues</url>
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>robotis_controller_msgs</build_depend>
-  <build_depend>cmake_modules</build_depend>
-  <build_depend>dynamixel_sdk</build_depend>
-  <build_depend>robotis_framework_common</build_depend>
-  <build_depend>robotis_device</build_depend>
-  <build_depend>robotis_controller</build_depend>
-  <build_depend>rh_p12_rn_base_module</build_depend>
+  <depend>roscpp</depend>
+  <depend>robotis_controller_msgs</depend>
+  <depend>cmake_modules</depend>
+  <depend>dynamixel_sdk</depend>
+  <depend>robotis_framework_common</depend>
+  <depend>robotis_device</depend>
+  <depend>robotis_controller</depend>
+  <depend>rh_p12_rn_base_module</depend>
 </package>
