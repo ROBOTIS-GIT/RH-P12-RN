@@ -1,5 +1,4 @@
 <?xml version="1.0" ?>
-
 <launch>
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
   <arg name="paused" default="true"/>
@@ -19,11 +18,10 @@
   </include>
 
   <!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description"
-   command="$(find xacro)/xacro.py '$(find rh_p12_rn_description)/urdf/rh_p12_rn.xacro'" />
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find rh_p12_rn_description)/urdf/rh_p12_rn.xacro'" />
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  <node pkg="gazebo_ros" type="spawn_model" name="urdf_spawner" respawn="false" output="screen"
   args="-urdf -model rh_p12_rn -param robot_description"/>
 
   <!-- ros_control robotis manipulator launch file -->
@@ -31,6 +29,6 @@
   <!--<include file="$(find rh_p12_rn_gazebo)/launch/trajectory_controller.launch" />-->
 
   <!-- gripper pub -->
-  <node name="gazebo_grip_pub" pkg="rh_p12_rn_gazebo" type="gazebo_rh_pub">
+  <node pkg="rh_p12_rn_gazebo" type="gazebo_rh_pub" name="gazebo_grip_pub">
   </node>
 </launch>

@@ -1,5 +1,5 @@
 /*******************************************************************************
-* Copyright 2017 ROBOTIS CO., LTD.
+* Copyright 2018 ROBOTIS CO., LTD.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -14,10 +14,9 @@
 * limitations under the License.
 *******************************************************************************/
 
-/* Author: zerom */
+/* Author: Zerom */
 
 #include "std_msgs/String.h"
-
 #include "robotis_controller/robotis_controller.h"
 
 /* Sensor Module Header */

@@ -1,28 +1,21 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>rh_p12_rn_gui</name>
   <version>0.1.0</version>
   <description>
-
-     rh_p12_rn_gui
-
+    This package provides GUI interface to control the RH-P12-RN
   </description>
-  <maintainer email="robotis@gmail.com">robotis</maintainer>
-  <author>robotis</author>
-  <license>BSD</license>
-  <!-- <url type="bugtracker">https://github.com/stonier/qt_ros/issues</url> -->
-  <!-- <url type="repository">https://github.com/stonier/qt_ros</url> -->
-
+  <license>Apache 2.0</license>
+  <author email="zerom@robotis.com">Zerom</author>
+  <maintainer email="pyo@robotis.com">Pyo</maintainer>
+  <url type="website">http://wiki.ros.org/rh_p12_rn_gui</url>
+  <url type="emanual">http://emanual.robotis.com/docs/en/platform/rh_p12_rn/</url>
+  <url type="repository">https://github.com/ROBOTIS-GIT/RH-P12-RN</url>
+  <url type="bugtracker">https://github.com/ROBOTIS-GIT/RH-P12-RN/issues</url>>
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>qt_build</build_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>libqt4-dev</build_depend>
-  <build_depend>robotis_controller_msgs</build_depend>
-  <build_depend>rh_p12_rn_base_module_msgs</build_depend>
-  <run_depend>qt_build</run_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>libqt4-dev</run_depend>
-  <run_depend>robotis_controller_msgs</run_depend>
-  <run_depend>rh_p12_rn_base_module_msgs</run_depend>
-
+  <depend>roscpp</depend>
+  <depend>robotis_controller_msgs</depend>
+  <depend>rh_p12_rn_base_module_msgs</depend>
+  <depend>qt_build</depend>
+  <depend>libqt4-dev</depend>
 </package>
