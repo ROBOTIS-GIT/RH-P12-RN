@@ -1,9 +1,8 @@
-# ROBOTIS RH-P12-RN Metapackage
+# ROS packages for RH-P12-RN 
 [![GitHub version](https://badge.fury.io/gh/ROBOTIS-GIT%2FRH-P12-RN.svg)](https://badge.fury.io/gh/ROBOTIS-GIT%2FRH-P12-RN) [![Build Status](https://travis-ci.org/ROBOTIS-GIT/RH-P12-RN.svg?branch=master)](https://travis-ci.org/ROBOTIS-GIT/RH-P12-RN)
 
-# Documents for rh_p12_rn packages
-- [ROBOTIS e-Manual](http://emanual.robotis.com/docs/en/platform/rh_p12_rn/)
-- http://wiki.ros.org/rh_p12_rn
+# Wiki for rh_p12_rn packages
+- http://wiki.ros.org/rh_p12_rn (metapackage)
 - http://wiki.ros.org/rh_p12_rn_base_module
 - http://wiki.ros.org/rh_p12_rn_base_module_msgs
 - http://wiki.ros.org/rh_p12_rn_description
@@ -17,5 +16,5 @@
 - [robotis_controller_msgs](https://github.com/ROBOTIS-GIT/ROBOTIS-Framework-msgs)
 - [dynamixel_sdk](https://github.com/ROBOTIS-GIT/DynamixelSDK)
 
-# Documents and Videos for RH-P12-RN
-- [ROBOTIS e-Manual for ROBOTIS OP3](http://emanual.robotis.com/docs/en/platform/rh_p12_rn/)
+# e-Manual and Videos for RH-P12-RN
+- [ROBOTIS e-Manual for RH-P12-RN](http://emanual.robotis.com/docs/en/platform/rh_p12_rn/)
