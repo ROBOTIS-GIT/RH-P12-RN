@@ -19,6 +19,8 @@ find_package(catkin REQUIRED COMPONENTS
   robotis_device
 )
 
+find_package(Boost REQUIRED COMPONENTS thread)
+
 ################################################################################
 # Setup for python modules and scripts
 ################################################################################
@@ -66,3 +68,7 @@ install(TARGETS ${PROJECT_NAME}
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
+
+################################################################################
+# Test
+################################################################################

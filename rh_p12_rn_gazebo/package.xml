@@ -3,7 +3,7 @@
   <name>rh_p12_rn_gazebo</name>
   <version>0.1.0</version>
   <description>
-    The rh_p12_rn_gazebo package
+    This package provides basic message pub and launch file to use RH-P12-RN on Gazebo
   </description>
   <license>Apache 2.0</license>
   <author email="sch@robotis.com">SCH</author>
@@ -16,4 +16,5 @@
   <depend>roscpp</depend>
   <depend>std_msgs</depend>
   <exec_depend>controller_manager</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
 </package>

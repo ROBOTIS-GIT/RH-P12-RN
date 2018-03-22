@@ -18,6 +18,6 @@
   </node>
 
   <!-- Gripper Pub-->
-  <node name="rviz_rh_pub" pkg="rh_p12_rn_description" type="rviz_rh_pub">
+  <node pkg="rh_p12_rn_description" type="rviz_rh_pub" name="rviz_rh_pub">
   </node>
 </launch>
