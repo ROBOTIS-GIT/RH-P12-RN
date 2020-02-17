@@ -17,4 +17,5 @@
   <depend>roscpp</depend>
   <depend>robotis_controller_msgs</depend>
   <depend>rh_p12_rn_base_module_msgs</depend>
+  <depend>libqt5-dev</depend>
 </package>
