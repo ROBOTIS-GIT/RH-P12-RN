@@ -6,21 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>866</width>
-    <height>528</height>
+    <width>870</width>
+    <height>560</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
-    <height>500</height>
+    <width>870</width>
+    <height>560</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>870</width>
+    <height>560</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>RH-P12-RN Example</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../../../ROBOTIS-OP3-Tools/op3_gui_demo/resources/images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/images/icon.png</normaloff>:/images/icon.png</iconset>
   </property>
   <property name="locale">
@@ -403,8 +409,8 @@ Position</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>866</width>
-     <height>19</height>
+     <width>870</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -449,7 +455,6 @@ Position</string>
   </action>
  </widget>
  <resources>
-  <include location="../../../ROBOTIS-OP3-Tools/op3_gui_demo/resources/images.qrc"/>
   <include location="../resources/images.qrc"/>
  </resources>
  <connections>
